@@ -1,6 +1,6 @@
 FROM ubuntu
 #Update and Upgrade apt
-RUN apt-get update && upgrade
+RUN apt-get update
 
 #Install Apache, MySQL and PHP
 RUN apt-get install apache2
