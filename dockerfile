@@ -12,5 +12,4 @@ RUN apk add git
 RUN mkdir webdocs
 RUN cd webdocs
 RUN git clone https://github.com/SamP10/UniVulnerableWebsite.git
-RUN systemctl restart apache2
 EXPOSE 80 8080
