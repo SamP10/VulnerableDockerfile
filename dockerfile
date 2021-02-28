@@ -3,8 +3,7 @@ FROM ubuntu
 RUN apt-get update
 
 #Install Apache, MySQL and PHP
-RUN apt-get install apache2/
-    y
+RUN apt-get install -y apache2
 RUN apt-get install curl
 RUN apt-get install php libapache2-mod-php php-mcrypt php-mysql
 RUN systemctl restart apache2
