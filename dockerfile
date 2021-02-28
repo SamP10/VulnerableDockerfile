@@ -6,7 +6,6 @@ RUN apk add nginx
 RUN apk add php7 php7-fpm php7-opcache
 RUN apk add php7-gd php7-mysqli php7-zlib php7-curl
 RUN apk add mariadb mariadb-client
-RUN mysql_secure_installation
 
 #Install GIT for website
 RUN apk add git
