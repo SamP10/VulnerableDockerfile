@@ -1,16 +1,14 @@
-FROM ubuntu
+FROM alpine
 #Update and Upgrade apt
-RUN apt-get update
-
+RUN apk update && apk upgrade
 #Install Apache, MySQL and PHP
-RUN apt-get install -y apache2
-RUN apt-get install curl
-RUN apt-get install php libapache2-mod-php php-mcrypt php-mysql
-RUN systemctl restart apache2
-RUN apt-get install php-cli
-
+RUN apk add nginx
+RUN apk add php7 php7-fpm php7-opcache
+RUN apk add php7-gd php7-mysqli php7-zlib php7-curl
+RUN apk add mysql mysql_client
+RUN mysql_secure_installation
 #Install GIT for website
-RUN apt-get install git
+RUN apk add git
 RUN cd /var/www/html/
 RUN git clone https://github.com/SamP10/UniVulnerableWebsite.git
 RUN systemctl restart apache2
