@@ -2,12 +2,11 @@ FROM alpine
 #Update and Upgrade apt
 RUN apk update && apk upgrade
 #Install Apache, MySQL and PHP
+RUN apk add apache2
 RUN apk add php7 php7-fpm php7-opcache
 RUN apk add php7-gd php7-mysqli php7-zlib php7-curl
 RUN apk add mariadb mariadb-client
 RUN apk add openrc
-RUN export phpverx=$(alpinever=$(cat /etc/alpine-release|cut -d '.' -f1);[ $alpinever -ge 9 ] && echo  7|| echo 5)
-RUN apk add apache2 php$phpverx-apache2
 #Install GIT for website
 RUN apk add git
 RUN cd /var/www/localhost/htdocs/
