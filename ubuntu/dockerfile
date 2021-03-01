@@ -1,0 +1,15 @@
+FROM ubuntu
+#Update and Upgrade apk
+RUN apt-get update && apt-get upgrade
+
+#Install Apache, MySQL and PHP
+RUN apt-get install apache2
+RUN apt-get install php libapache2-mod-php php-mcrypt php-mysql
+RUN apt-get install php-cli
+RUN apt-get install mysql-server
+
+#Install GIT for website
+RUN apt-get install git
+RUN git clone https://github.com/SamP10/UniVulnerableWebsite.git
+RUN mv UniVulnerableWebsite /var/www/localhost/htdocs/
+EXPOSE 80 8080
