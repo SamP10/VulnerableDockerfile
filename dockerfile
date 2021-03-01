@@ -11,6 +11,6 @@ RUN apk add openrc
 
 #Install GIT for website
 RUN apk add git
-RUN cd /var/www/localhost/htdocs/
 RUN git clone https://github.com/SamP10/UniVulnerableWebsite.git
+RUN mv UniVulnerableWebsite /var/www/localhost/htdocs/
 EXPOSE 80 8080
