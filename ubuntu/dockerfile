@@ -3,7 +3,7 @@ FROM ubuntu
 RUN apt-get update && apt-get upgrade -y
 
 #Install Apache, MySQL and PHP
-RUN apt-get install -y apache2
+RUN  DEBIAN_FRONTEND="noninteractive" apt-get install -y apache2
 RUN apt-get install -y php libapache2-mod-php php-mcrypt php-mysql
 RUN apt-get install -y php-cli
 RUN apt-get install -y mysql-server
