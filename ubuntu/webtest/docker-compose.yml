@@ -1,13 +1,14 @@
 version: "3.7"
 services:
   web-server:
-    build: php.dockerfile
+    build:
+      dockerfile: php.dockerfile
       context: .
     restart: always
     volumes:
-      -"./html/:/var/www/html"
+      - "./html/:/var/www/html"
     ports:
-      -"8080:80"
+      - "8080:80"
   mysql-server:
     image: mysql:8.0.19
     restart: always
@@ -25,5 +26,5 @@ services:
       PMA_PASSWORD: tiaspbiqe2r
     ports:
       - "5000:80"
-    volumes:
-      mysql-data:
+volumes:
+  mysql-data:
