@@ -22,7 +22,6 @@ services:
       dockerfile: vulnerableCont.dockerfile
       context: .
     restart: always
-    volumes:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:5.0.1
