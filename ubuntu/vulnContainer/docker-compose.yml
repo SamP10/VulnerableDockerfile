@@ -29,7 +29,7 @@ services:
 volumes:
   mysql-data:
 
-  vulnCont:
+  vulnDocker:
     build:
       dockerfile: vulnerableCont.dockerfile
       context: .
