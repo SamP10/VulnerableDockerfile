@@ -10,5 +10,4 @@ RUN tar zxf git-2.14.4.tar.gz
 RUN cd git-2.14.4 && \
     make configure && \
     ./configure --prefix=/usr && \
-    make all doc info && \
-    make install install-doc install-html install-info
+    make install
