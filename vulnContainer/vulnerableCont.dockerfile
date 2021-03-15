@@ -1,7 +1,6 @@
 FROM ubuntu:17.10
-ARG CURL_OPTIONS=""
-RUN apt-get update && apt-get upgrade -y
 ENV DEBIAN_FRONTEND="noninteractive"
+RUN apt-get update && apt-get upgrade
 RUN apt-get install -y build-essential
 RUN apt-get install -y autoconf
 RUN apt-get install -y curl
