@@ -17,6 +17,13 @@ services:
     volumes:
     - mysql-data:/var/lib/mysql
 
+  vulnDocker:
+    build:
+      dockerfile: vulnerableCont.dockerfile
+      context: .
+    restart: always
+    volumes:
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:5.0.1
     restart: always
@@ -28,11 +35,4 @@ services:
       - "5000:80"
 volumes:
   mysql-data:
-
-  vulnDocker:
-    build:
-      dockerfile: vulnerableCont.dockerfile
-      context: .
-    restart: always
-    volumes:
 
