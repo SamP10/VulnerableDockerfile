@@ -34,3 +34,5 @@ volumes:
       dockerfile: vulnerableCont.dockerfile
       context: .
     restart: always
+    volumes:
+
