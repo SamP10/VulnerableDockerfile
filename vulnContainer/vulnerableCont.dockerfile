@@ -1,6 +1,6 @@
 FROM ubuntu:bionic-20180125
 ENV DEBIAN_FRONTEND="noninteractive"
-RUN apt-get update && apt-get upgrade
+RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y build-essential
 RUN apt-get install -y autoconf
 RUN apt-get install -y curl
