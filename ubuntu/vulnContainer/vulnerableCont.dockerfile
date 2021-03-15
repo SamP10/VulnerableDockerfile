@@ -10,5 +10,4 @@ RUN curl -LO ${CURL_OPTIONS} \
         make configure && \
         ./configure --prefix=/usr && \
         make all doc info && \
-        make install install-doc install-html install-info && \
-        rm -f *.tar.gz
+        make install install-doc install-html install-info
