@@ -6,7 +6,7 @@ services:
       context: .
     restart: always
     volumes:
-      - "./UniVulnerableWebsite/:/var/www/html"
+      - "./UniVulnerableWebsite/:/var/www/html/"
     ports:
       - "8080:80"
   mysql-server:
