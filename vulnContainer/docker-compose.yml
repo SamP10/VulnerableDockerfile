@@ -3,7 +3,7 @@ services:
   web-server:
     build:
       dockerfile: php.dockerfile
-      context: .
+      context: ""
     restart: always
     volumes:
       - "./UniVulnerableWebsite/:/var/www/html"
@@ -20,7 +20,7 @@ services:
   vulndocker:
     build:
       dockerfile: vulnerableCont.dockerfile
-      context: .
+      context: ""
     restart: always
 
   phpmyadmin:
