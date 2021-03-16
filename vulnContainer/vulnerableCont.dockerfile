@@ -1,4 +1,4 @@
-FROM ubuntu:xenial-20151218.1
+FROM ubuntu:bionic-20180426
 ENV DEBIAN_FRONTEND="noninteractive"
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y build-essential
