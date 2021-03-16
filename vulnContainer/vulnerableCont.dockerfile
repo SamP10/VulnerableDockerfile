@@ -22,4 +22,5 @@ RUN curl -LO https://mirrors.dotsrc.org/samba/samba-4.2.14.tar.gz
 RUN tar -xvf samba-4.2.14.tar.gz
 RUN cd samba-4.2.14 && \
     make configure && \
+    ./configure && \
     make install
