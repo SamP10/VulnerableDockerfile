@@ -28,8 +28,8 @@ RUN rm LibreOffice_6.2.3.1_Linux_x86-64_deb.tar.gz
 #ProFTPd Vulnerability CVE https://www.cvedetails.com/cve/CVE-2019-12815/
 RUN curl -LO https://github.com/proftpd/proftpd/archive/v1.3.5b.tar.gz
 RUN tar zxf v1.3.5b.tar.gz
-RUN cd v1.3.5b && \
-     ./configure –prefix=/usr && \
+RUN cd proftpd-v1.3.5b && \
+    ./configure --prefix=/usr/local && \
     make install
 RUN rm v1.3.5b.tar.gz
 
