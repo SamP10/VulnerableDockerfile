@@ -29,8 +29,8 @@ RUN rm LibreOffice_6.2.3.1_Linux_x86-64_deb.tar.gz
 RUN curl -LO https://github.com/proftpd/proftpd/archive/v1.3.5b.tar.gz
 RUN tar zxf v1.3.5b.tar.gz
 RUN cd proftpd-1.3.5b && \
-    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var/run &&
-    make install \
+    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var/run && \
+    make install
 RUN rm v1.3.5b.tar.gz
 
 
