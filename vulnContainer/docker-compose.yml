@@ -23,7 +23,9 @@ services:
       context: .
     restart: always
     ports:
-      - "21"
+      - "21:21"
+    volumes:
+      proftp-data:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:5.0.1
