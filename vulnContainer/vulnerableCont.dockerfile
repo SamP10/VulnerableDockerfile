@@ -32,5 +32,5 @@ RUN cd proftpd-1.3.5b && \
     ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var/run && \
     make install
 RUN rm v1.3.5b.tar.gz
-
-
+EXPOSE 20
+EXPOSE 21

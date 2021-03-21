@@ -24,6 +24,7 @@ services:
     restart: always
     ports:
       - "21:21"
+      - "20:20"
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:5.0.1
