@@ -10,7 +10,7 @@ services:
     ports:
       - "8080:80"
   mysql-server:
-    image: mysql:8.0.19
+    image: arm64v8/mariadb:latest
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: tiaspbiqe2r
