@@ -10,7 +10,7 @@ services:
     ports:
       - "8080:80"
   mysql-server:
-    image: mysql/mysql-server:latest
+    image: arm64v8/mariadb:latest
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: tiaspbiqe2r
@@ -30,7 +30,7 @@ services:
     image: phpmyadmin/phpmyadmin:5.0.1
     restart: always
     environment:
-      PMA_HOST: mysql-server
+      PMA_HOST: mariadb
       PMA_USER: root
       PMA_PASSWORD: tiaspbiqe2r
     ports:
