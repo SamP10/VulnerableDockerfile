@@ -20,11 +20,11 @@ RUN cd git-2.14.4 && \
 RUN rm git-2.14.4.tar.gz
 
 #LibreOffice Vulnerability CVE https://www.cvedetails.com/cve/CVE-2019-9851/
-RUN curl -LO https://downloadarchive.documentfoundation.org/libreoffice/old/6.2.3.1/deb/x86_64/LibreOffice_6.2.3.1_Linux_x86-64_deb.tar.gz
-RUN tar zxf LibreOffice_6.2.3.1_Linux_x86-64_deb.tar.gz
-RUN cd LibreOffice_6.2.3.1_Linux_x86-64_deb/DEBS/ && \
-    dpkg -i *.deb
-RUN rm LibreOffice_6.2.3.1_Linux_x86-64_deb.tar.gz
+#RUN curl -LO https://downloadarchive.documentfoundation.org/libreoffice/old/6.2.3.1/deb/x86_64/LibreOffice_6.2.3.1_Linux_x86-64_deb.tar.gz
+#RUN tar zxf LibreOffice_6.2.3.1_Linux_x86-64_deb.tar.gz
+#RUN cd LibreOffice_6.2.3.1_Linux_x86-64_deb/DEBS/ && \
+#    dpkg -i *.deb
+#RUN rm LibreOffice_6.2.3.1_Linux_x86-64_deb.tar.gz
 
 #ProFTPd Vulnerability CVE https://www.cvedetails.com/cve/CVE-2019-12815/
 RUN curl -LO https://github.com/proftpd/proftpd/archive/v1.3.5b.tar.gz
