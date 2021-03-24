@@ -15,7 +15,7 @@ services:
   mysql-server:
     image: mysql/mysql-server:latest
     environment:
-      - MYSQL_ROOT_PASSWORD: tiaspbiqe2r
+      - MYSQL_ROOT_PASSWORD: "tiaspbiqe2r"
     volumes:
     - mysql-data:/var/lib/mysql
 
