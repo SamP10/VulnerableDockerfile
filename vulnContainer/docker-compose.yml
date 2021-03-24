@@ -35,6 +35,7 @@ services:
       - PMA_HOST=mariadb
     ports:
       - 8000:80
-    depends_on: mysql-server
+    depends_on:
+      - mysql-server
 volumes:
   mariadb-data:
