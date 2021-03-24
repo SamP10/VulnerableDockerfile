@@ -15,7 +15,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: tiaspbiqe2r
     volumes:
-    - mysql-data:/var/lib/mysql
+    - mariadb-data:/var/lib/mysql
 
   vulndocker:
     build:
@@ -27,13 +27,12 @@ services:
       - "20:20"
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin:5.0.1
+    image: phpmyadmin/phpmyadmin:latest
     restart: always
     environment:
-      PMA_HOST: mariadb
-      PMA_USER: root
-      PMA_PASSWORD: tiaspbiqe2r
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mariadb
     ports:
-      - "5000:80"
+      - "8000:80"
 volumes:
-  mysql-data:
+  mariadb-data:
