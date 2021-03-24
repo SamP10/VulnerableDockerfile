@@ -19,7 +19,7 @@ services:
       MYSQL_DATABASE: university
     volumes:
     - mysql-data:/var/lib/mysql
-    - "./uni.sql:/docker-entrypoint-init.db/uni.sql"
+    - "./uni.sql:/docker-entrypoint-initdb.d/uni.sql"
 
   vulndocker:
     build:
