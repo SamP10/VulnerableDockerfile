@@ -13,17 +13,13 @@ services:
       - mariadb
 
   mariadb:
-    build:
-      dockerfile: mariadb.dockerfile
-      context: .
-    restart: always
-#   image: mariadb
-#    environment:
-#      MYSQL_ROOT_PASSWORD: tiaspbiqe2r
-#      MYSQL_DATABASE: university
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: tiaspbiqe2r
+      MYSQL_DATABASE: university
     volumes:
     - mysql-data:/var/lib/mysql
-#    - "./uni.sql:/tmp/uni.sql"
+    - "./uni.sql:/tmp/uni.sql"
 
   vulndocker:
     build:
