@@ -1,38 +1,46 @@
 version: "3.7"
-
 services:
-
-  web:
-    image: nginx:1.17
+  web-server:
+    build:
+      dockerfile: php.dockerfile
+      context: .
+    restart: always
+    volumes:
+      - "./UniVulnerableWebsite/:/var/www/html/"
     ports:
       - 80:80
-    volumes:
-      - ./UniVulnerableWebsite/:/var/www/myapp
-    depends_on:
-      - php
-      - mariadb
-
-  php:
-    image: php:7.2-fpm
-    depends_on:
+    links:
       - mariadb
 
   mariadb:
     image: mariadb:latest
     restart: always
-    volumes:
-      - mariadb-data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: tiaspbiqe2r
+      MYSQL_DATABASE: university
+    volumes:
+    - mariadb-data:/var/lib/mysql
+
+  vulndocker:
+    build:
+      dockerfile: vulnerableCont.dockerfile
+      context: .
+    restart: always
+    ports:
+      - 21:21
+      - 20:20
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
-    ports:
-      - 8000:80
+    restart: always
     environment:
       - PMA_ARBITRARY=1
       - PMA_HOST=mariadb
+    ports:
+      - 8000:80
     depends_on:
+      - mariadb
+    links:
       - mariadb
 
 volumes:
