@@ -10,15 +10,13 @@ services:
     ports:
       - 8080:80
     links:
-      - mysql-server
+      - mariadb
 
-  mysql-server:
-    image: mysql/mysql-server
+  mariadb:
+    image: mariadb
     environment:
       MYSQL_ROOT_PASSWORD: tiaspbiqe2r
       MYSQL_DATABASE: university
-    ports:
-      - "3306:3306"
     volumes:
     - mysql-data:/var/lib/mysql
 
@@ -30,18 +28,6 @@ services:
     ports:
       - 21:21
       - 20:20
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin:5.0.1
-    restart: always
-    environment:
-      PMA_HOST: mysql-server
-      PMA_USER: root
-      PMA_PASSWORD: tiaspbiqe2r
-    ports:
-      - "5000:80"
-    links:
-      - mysql-server
 
 volumes:
   mysql-data:
