@@ -10,7 +10,7 @@ services:
     ports:
       - 8080:80
     links:
-      - mariadb
+      - mysql-server
 
   mysql-server:
     image: mysql/mysql-server:latest
@@ -37,6 +37,8 @@ services:
       PMA_PASSWORD: tiaspbiqe2r
     ports:
       - "5000:80"
+    links:
+      - mysql-server
 
 volumes:
   mysql-data:
