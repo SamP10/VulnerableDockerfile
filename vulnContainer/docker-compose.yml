@@ -13,9 +13,12 @@ services:
       - mysql-server
 
   mysql-server:
-    image: mysql/mysql-server:latest
+    image: mysql/mysql-server
     environment:
       MYSQL_ROOT_PASSWORD: tiaspbiqe2r
+      MYSQL_DATABASE: university
+    ports:
+      - "3306:3306"
     volumes:
     - mysql-data:/var/lib/mysql
 
