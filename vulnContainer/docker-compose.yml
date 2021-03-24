@@ -12,12 +12,12 @@ services:
     links:
       - mariadb
 
-  mariadb:
-    build:
-      dockerfile: mariadb.dockerfile
-      context: .
+  mysql-server:
+    image: mysql/mysql-server:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD = tiaspbiqe2r
     volumes:
-    - mariadb-data:/var/lib/mysql
+    - mysql-data:/var/lib/mysql
 
   vulndocker:
     build:
@@ -28,5 +28,15 @@ services:
       - 21:21
       - 20:20
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.0.1
+    restart: always
+    environment:
+      PMA_HOST: mysql-server
+      PMA_USER: root
+      PMA_PASSWORD: tiaspbiqe2r
+    ports:
+      - "5000:80"
+
 volumes:
-  mariadb-data:
+  mysql-data:
