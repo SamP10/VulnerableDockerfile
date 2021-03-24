@@ -36,8 +36,10 @@ services:
     environment:
       - PMA_ARBITRARY=1
       - PMA_HOST=mariadb
+      - PMA_PORT=3306
+      - PMA_PASSWORD=tiaspbiqe2r
     ports:
-      - 8000:80
+      - 5000:80
     depends_on:
       - mariadb
     links:
