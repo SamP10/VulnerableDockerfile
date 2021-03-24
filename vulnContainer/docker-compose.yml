@@ -13,11 +13,9 @@ services:
       - mariadb
 
   mariadb:
-    image: mariadb:latest
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: tiaspbiqe2r
-      MYSQL_DATABASE: university
+    build:
+      dockerfile: mariadb.dockerfile
+      context: .
     volumes:
     - mariadb-data:/var/lib/mysql
 
@@ -29,21 +27,6 @@ services:
     ports:
       - 21:21
       - 20:20
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
-    restart: always
-    environment:
-      - PMA_ARBITRARY=1
-      - PMA_HOST=mariadb
-      - PMA_PORT=3306
-      - PMA_PASSWORD=tiaspbiqe2r
-    ports:
-      - 5000:80
-    depends_on:
-      - mariadb
-    links:
-      - mariadb
 
 volumes:
   mariadb-data:
