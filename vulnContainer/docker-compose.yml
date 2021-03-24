@@ -11,7 +11,7 @@ services:
       - 80:80
 
   mariadb:
-    image: arm64v8/mariadb:latest
+    image: mariadb:latest
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: tiaspbiqe2r
