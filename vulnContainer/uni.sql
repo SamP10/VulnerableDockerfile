@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `course`
 --
-USE university;
+CREATE DATABASE university;
 
 CREATE TABLE `course` (
   `id` int(11) NOT NULL,
