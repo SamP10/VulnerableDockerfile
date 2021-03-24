@@ -10,7 +10,7 @@ services:
     ports:
       - 80:80
 
-  mysql-server:
+  mariadb:
     image: arm64v8/mariadb:latest
     restart: always
     environment:
@@ -36,6 +36,6 @@ services:
     ports:
       - 8000:80
     depends_on:
-      - mysql-server
+      - mariadb
 volumes:
   mariadb-data:
