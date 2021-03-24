@@ -8,7 +8,8 @@ services:
     volumes:
       - "./UniVulnerableWebsite/:/var/www/html/"
     ports:
-      - "8080:80"
+      - 80:80
+
   mysql-server:
     image: arm64v8/mariadb:latest
     restart: always
@@ -23,8 +24,8 @@ services:
       context: .
     restart: always
     ports:
-      - "21:21"
-      - "20:20"
+      - 21:21
+      - 20:20
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
@@ -33,6 +34,7 @@ services:
       - PMA_ARBITRARY=1
       - PMA_HOST=mariadb
     ports:
-      - "8000:80"
+      - 8000:80
+    depends_on: mysql-server
 volumes:
   mariadb-data:
