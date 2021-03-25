@@ -36,6 +36,5 @@ RUN cd proftpd-1.3.5b && \
     make install && \
     cp contrib/dist/rpm/proftpd.init.d /etc/init.d/proftpd
 RUN rm v1.3.5b.tar.gz
-RUN /etc/init.d/proftpd start
 
 EXPOSE 20 21
