@@ -25,11 +25,12 @@ services:
     build:
       dockerfile: vulnerableCont.dockerfile
       context: .
-    restart: unless-stopped
+    restart: on-failure
     ports:
       - "21:21"
       - "20:20"
       - "60000-60100:60000-60100"
+    network_mode: host
 
 volumes:
   mysql-data:

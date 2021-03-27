@@ -1,5 +1,5 @@
-#FROM ubuntu:bionic-20180426
-FROM debian
+FROM ubuntu:bionic-20180426
+
 ENV DEBIAN_FRONTEND="noninteractive"
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y build-essential
