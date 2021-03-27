@@ -26,6 +26,8 @@ services:
       dockerfile: vulnerableCont.dockerfile
       context: .
     restart: on-failure
+    environment:
+      PROFTPD_PUBLICIP: 192.168.0.84
     ports:
       - "21:21"
       - "20:20"
