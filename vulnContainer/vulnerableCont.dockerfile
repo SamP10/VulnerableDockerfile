@@ -32,7 +32,7 @@ RUN rm git-2.14.4.tar.gz
 RUN curl -LO https://github.com/proftpd/proftpd/archive/v1.3.5b.tar.gz
 RUN tar zxf v1.3.5b.tar.gz
 RUN cd proftpd-1.3.5b && \
-    ./configure --with-modules=mod_copy --prefix=/usr --sysconfdir=/etc --localstatedir=/var/run && \
+    ./configure --with-modules=mod_copy --prefix=/usr --sysconfdir=/etc/proftpd --localstatedir=/var/proftpd && \
     make install && \
     cp contrib/dist/rpm/proftpd.init.d /etc/init.d/proftpd
 RUN rm v1.3.5b.tar.gz
