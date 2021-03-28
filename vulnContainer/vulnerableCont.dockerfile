@@ -4,15 +4,10 @@ ENV DEBIAN_FRONTEND="noninteractive"
 
 #Install dependencies
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y build-essential
-RUN apt-get install -y autoconf
+RUN apt-get install -y build-essential && \
 #Curl Vulnerability https://www.cvedetails.com/cve/CVE-2018-1000300/
-RUN apt-get install -y curl
-RUN apt-get install -y zlib1g-dev && \
-    apt-get install -y tcl-dev && \
-    apt-get install -y libssl-dev && \
-    apt-get install -y gettext && \
-    apt-get install -y wget
+    curl
+
 
 
 #GIT Vulnerability CVE https://www.cvedetails.com/cve/CVE-2018-17456/
@@ -23,7 +18,7 @@ RUN apt-get install -y zlib1g-dev && \
 #    ./configure --prefix=/usr/local && \
 #    make prefix=/usr/local install
 #RUN rm git-2.14.4.tar.gz
-RUN apt-get install git
+RUN apt-get install -y git
 
 #Not correctly configure for ARM architecture
 #LibreOffice Vulnerability CVE https://www.cvedetails.com/cve/CVE-2019-9851/
