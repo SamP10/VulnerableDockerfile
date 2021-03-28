@@ -6,19 +6,15 @@ ENV DEBIAN_FRONTEND="noninteractive"
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y build-essential && \
 #Curl Vulnerability https://www.cvedetails.com/cve/CVE-2018-1000300/
-    apt-get install -y curl
-
-
-
+    apt-get install -y curl && \
 #GIT Vulnerability CVE https://www.cvedetails.com/cve/CVE-2018-17456/
-#RUN curl -LO https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.14.4.tar.gz
-#RUN tar zxf git-2.14.4.tar.gz
-#RUN cd git-2.14.4 && \
-#    make configure && \
-#    ./configure --prefix=/usr/local && \
-#    make prefix=/usr/local install
-#RUN rm git-2.14.4.tar.gz
-RUN apt-get install -y git
+    apt-get install -y git && \
+#Rdesktop Vulnerability https://www.cvedetails.com/cve/CVE-2018-20182/
+    apt-get install -y rdesktop && \
+#OpenSSH Vulnerability https://www.cvedetails.com/cve/CVE-2018-15473/
+    apt-get install -y openssh-server && \
+#Installation of ftp server
+    apt-get install -y proftpd
 
 #Not correctly configure for ARM architecture
 #LibreOffice Vulnerability CVE https://www.cvedetails.com/cve/CVE-2019-9851/
@@ -27,12 +23,3 @@ RUN apt-get install -y git
 #RUN cd LibreOffice_6.2.3.1_Linux_x86-64_deb/DEBS/ && \
 #    dpkg -i *.deb
 #RUN rm LibreOffice_6.2.3.1_Linux_x86-64_deb.tar.gz
-
-#Installation of ftp server
-RUN apt-get install -y proftpd
-
-#Rdesktop Vulnerability https://www.cvedetails.com/cve/CVE-2018-20182/
-RUN apt-get install -y rdesktop
-
-#OpenSSH Vulnerability https://www.cvedetails.com/cve/CVE-2018-15473/
-RUN apt-get install -y openssh-server
