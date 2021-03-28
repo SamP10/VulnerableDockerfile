@@ -26,13 +26,6 @@ services:
       dockerfile: vulnerableCont.dockerfile
       context: .
     restart: on-failure
-    environment:
-      PROFTPD_PUBLICIP: 192.168.0.84
-    ports:
-      - "21:21"
-      - "20:20"
-      - "60000-60100:60000-60100"
-    network_mode: host
 
 volumes:
   mysql-data:
