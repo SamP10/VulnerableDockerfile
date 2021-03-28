@@ -44,4 +44,4 @@ RUN rm git-2.14.4.tar.gz
 
 #FreeRDP Vulnerability CVE https://www.cvedetails.com/cve/CVE-2018-8785/
 RUN curl -LO http://pub.freerdp.com/releases/freerdp-2.0.0-rc3.tar.gz
-RUN tar zxf freerdp-2.0.0-rc3
+RUN tar zxf freerdp-2.0.0-rc3.tar.gz
