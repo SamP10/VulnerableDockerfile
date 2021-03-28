@@ -6,6 +6,7 @@ ENV DEBIAN_FRONTEND="noninteractive"
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y build-essential
 RUN apt-get install -y autoconf
+#Curl Vulnerability https://www.cvedetails.com/cve/CVE-2018-1000300/
 RUN apt-get install -y curl
 RUN apt-get install -y zlib1g-dev && \
     apt-get install -y tcl-dev && \
@@ -15,13 +16,14 @@ RUN apt-get install -y zlib1g-dev && \
 
 
 #GIT Vulnerability CVE https://www.cvedetails.com/cve/CVE-2018-17456/
-RUN curl -LO https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.14.4.tar.gz
-RUN tar zxf git-2.14.4.tar.gz
-RUN cd git-2.14.4 && \
-    make configure && \
-    ./configure --prefix=/usr/local && \
-    make prefix=/usr/local install
-RUN rm git-2.14.4.tar.gz
+#RUN curl -LO https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.14.4.tar.gz
+#RUN tar zxf git-2.14.4.tar.gz
+#RUN cd git-2.14.4 && \
+#    make configure && \
+#    ./configure --prefix=/usr/local && \
+#    make prefix=/usr/local install
+#RUN rm git-2.14.4.tar.gz
+RUN apt-get install git
 
 #Not correctly configure for ARM architecture
 #LibreOffice Vulnerability CVE https://www.cvedetails.com/cve/CVE-2019-9851/
@@ -31,17 +33,11 @@ RUN rm git-2.14.4.tar.gz
 #    dpkg -i *.deb
 #RUN rm LibreOffice_6.2.3.1_Linux_x86-64_deb.tar.gz
 
-#Not correctly configured ftp vulnearble service
-#ProFTPd Vulnerability CVE https://www.cvedetails.com/cve/CVE-2019-12815/
-#RUN curl -LO https://github.com/proftpd/proftpd/archive/v1.3.5b.tar.gz
-#RUN tar zxf v1.3.5b.tar.gz
-#RUN cd proftpd-1.3.5b && \
-#    ./configure --with-modules=mod_copy --prefix=/usr --sysconfdir=/etc/proftpd --localstatedir=/var/proftpdse && \
-#    make install && \
-#    cp contrib/dist/rpm/proftpd.init.d /etc/init.d/proftpd
-#RUN rm v1.3.5b.tar.gz
-#EXPOSE 20 21
+#Installation of ftp server
+RUN apt-get install -y proftpd
 
-#FreeRDP Vulnerability CVE https://www.cvedetails.com/cve/CVE-2018-8785/
-RUN curl -LO http://pub.freerdp.com/releases/freerdp-2.0.0-rc3.tar.gz
-RUN tar zxf freerdp-2.0.0-rc3.tar.gz
+#Rdesktop Vulnerability https://www.cvedetails.com/cve/CVE-2018-20182/
+RUN apt-get install -y rdesktop
+
+#OpenSSH Vulnerability https://www.cvedetails.com/cve/CVE-2018-15473/
+RUN apt-get install -y openssh-server
