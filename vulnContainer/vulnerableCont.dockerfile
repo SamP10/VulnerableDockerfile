@@ -1,6 +1,8 @@
 FROM ubuntu:bionic-20180426
 
 ENV DEBIAN_FRONTEND="noninteractive"
+
+#Install dependencies
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y build-essential
 RUN apt-get install -y autoconf
@@ -21,6 +23,7 @@ RUN cd git-2.14.4 && \
     make prefix=/usr/local install
 RUN rm git-2.14.4.tar.gz
 
+#Not correctly configure for ARM architecture
 #LibreOffice Vulnerability CVE https://www.cvedetails.com/cve/CVE-2019-9851/
 #RUN curl -LO https://downloadarchive.documentfoundation.org/libreoffice/old/6.2.3.1/deb/x86_64/LibreOffice_6.2.3.1_Linux_x86-64_deb.tar.gz
 #RUN tar zxf LibreOffice_6.2.3.1_Linux_x86-64_deb.tar.gz
@@ -28,13 +31,17 @@ RUN rm git-2.14.4.tar.gz
 #    dpkg -i *.deb
 #RUN rm LibreOffice_6.2.3.1_Linux_x86-64_deb.tar.gz
 
+#Not correctly configured ftp vulnearble service
 #ProFTPd Vulnerability CVE https://www.cvedetails.com/cve/CVE-2019-12815/
-RUN curl -LO https://github.com/proftpd/proftpd/archive/v1.3.5b.tar.gz
-RUN tar zxf v1.3.5b.tar.gz
-RUN cd proftpd-1.3.5b && \
-    ./configure --with-modules=mod_copy --prefix=/usr --sysconfdir=/etc/proftpd --localstatedir=/var/proftpd && \
-    make install && \
-    cp contrib/dist/rpm/proftpd.init.d /etc/init.d/proftpd
-RUN rm v1.3.5b.tar.gz
+#RUN curl -LO https://github.com/proftpd/proftpd/archive/v1.3.5b.tar.gz
+#RUN tar zxf v1.3.5b.tar.gz
+#RUN cd proftpd-1.3.5b && \
+#    ./configure --with-modules=mod_copy --prefix=/usr --sysconfdir=/etc/proftpd --localstatedir=/var/proftpdse && \
+#    make install && \
+#    cp contrib/dist/rpm/proftpd.init.d /etc/init.d/proftpd
+#RUN rm v1.3.5b.tar.gz
+#EXPOSE 20 21
 
-EXPOSE 20 21
+#FreeRDP Vulnerability CVE https://www.cvedetails.com/cve/CVE-2018-8785/
+RUN curl -LO http://pub.freerdp.com/releases/freerdp-2.0.0-rc3.tar.gz
+RUN tar zxp freerdp-2.0.0-rc3
