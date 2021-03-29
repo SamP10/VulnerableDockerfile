@@ -26,7 +26,6 @@ services:
       dockerfile: vulnerableCont.dockerfile
       context: .
     restart: on-failure
-
     ports:
       - 20:20
       - 21:21
