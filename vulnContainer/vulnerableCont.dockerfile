@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND="noninteractive"
 
 #Install dependencies
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y build-essentials && \
+RUN
 #Curl Vulnerability https://www.cvedetails.com/cve/CVE-2018-1000300/
     apt-get install -y curl && \
 #GIT Vulnerability CVE https://www.cvedetails.com/cve/CVE-2018-17456/
