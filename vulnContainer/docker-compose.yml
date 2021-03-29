@@ -26,11 +26,6 @@ services:
       dockerfile: vulnerableCont.dockerfile
       context: .
     restart: on-failure
-    ports:
-      - "0:20"
-      - "0:21"
-      - "0:22"
-      - "3389:3389"
     volumes:
       - user-data-ftp:/home/
 
