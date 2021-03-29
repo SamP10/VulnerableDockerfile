@@ -1,8 +1,4 @@
 version: "3.7"
-networks:
-   default:
-     external:
-       name: vulnnetwork
 services:
   web-server:
     build:
