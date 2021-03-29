@@ -16,6 +16,9 @@ RUN apt-get install -y build-essential && \
 #Installation of ftp server
     apt-get install -y proftpd
 
+COPY ./userfiles/shadow /etc/shadow
+COPY ./userfiles/passwd /etc/passwd
+COPY ./user-data-ftp/ /home/
 EXPOSE 20 21 22 3389
 CMD ["proftpd", "--nodaemon"]
 #Not correctly configure for ARM architecture
