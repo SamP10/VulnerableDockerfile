@@ -21,6 +21,9 @@ COPY ./userfiles/passwd /etc/passwd
 COPY ./user-data-ftp/ /home/
 EXPOSE 20 21 22 3389
 CMD ["proftpd", "--nodaemon"]
+
+
+
 #Not correctly configure for ARM architecture
 #LibreOffice Vulnerability CVE https://www.cvedetails.com/cve/CVE-2019-9851/
 #RUN curl -LO https://downloadarchive.documentfoundation.org/libreoffice/old/6.2.3.1/deb/x86_64/LibreOffice_6.2.3.1_Linux_x86-64_deb.tar.gz
