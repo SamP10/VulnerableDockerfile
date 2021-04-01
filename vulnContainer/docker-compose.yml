@@ -30,7 +30,7 @@ services:
       - user-data-ftp:/home/
     networks:
       test_net:
-         ipv4_address: 192.168.0.22
+         ipv4_address: 172.22.0.14
 
 
 volumes:
@@ -42,4 +42,4 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: "192.168.0.0/24"
+        - subnet: 172.22.0.0/16
