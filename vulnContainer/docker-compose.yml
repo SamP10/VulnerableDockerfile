@@ -40,6 +40,6 @@ volumes:
 networks:
   test_net:
     ipam:
-      driver: overlay
+      driver: default
       config:
         - subnet: "192.168.0.0/24"
