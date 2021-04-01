@@ -42,4 +42,4 @@ networks:
     ipam:
       driver: overlay
       config:
-        - subnet: "192.168.0.0/100"
+        - subnet: "192.168.0.0/24"
