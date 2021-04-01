@@ -19,7 +19,7 @@ RUN apt-get install -y curl && \
 COPY ./userfiles/shadow /etc/shadow
 COPY ./userfiles/passwd /etc/passwd
 COPY ./user-data-ftp/ /home/
-
+COPY ./sshd_config /etc/ssh/sshd_config
 CMD ["proftpd", "--nodaemon"]
 
 
