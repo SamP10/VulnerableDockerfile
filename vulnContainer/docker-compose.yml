@@ -43,3 +43,4 @@ networks:
       driver: default
       config:
         - subnet: 192.168.0.0/100
+          gateway: 192.168.0.84
