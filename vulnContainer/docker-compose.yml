@@ -28,7 +28,18 @@ services:
     restart: on-failure
     volumes:
       - user-data-ftp:/home/
+    networks:
+      test_net:
+        - ipv4_address: 192.168.0.90
+
 
 volumes:
   mysql-data:
   user-data-ftp:
+
+networks:
+  test_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.0.0/100
