@@ -27,8 +27,8 @@ services:
       context: .
     restart: on-failure
     ports:
-      - 2020:20
-      - 2121:21
+      - 20
+      - 21
       - 3389:3389
     volumes:
       - user-data-ftp:/home/
