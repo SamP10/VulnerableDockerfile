@@ -35,7 +35,7 @@ services:
       - user-data-ftp:/home/
     networks:
       test_net:
-         ipv4_address: 172.22.0.14
+         ipv4_address: 172.22.0.13
 
 
 volumes:
