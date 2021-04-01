@@ -29,6 +29,7 @@ services:
     ports:
       - 20
       - 21
+      - 22
       - 3389:3389
     volumes:
       - user-data-ftp:/home/
