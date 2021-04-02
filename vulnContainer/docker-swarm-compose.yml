@@ -33,10 +33,3 @@ services:
 volumes:
   mysql-data:
   user-data-ftp:
-
-networks:
-  test_net:
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.20.0.0/16
