@@ -20,8 +20,7 @@ COPY ./userfiles/shadow /etc/shadow
 COPY ./userfiles/passwd /etc/passwd
 COPY ./user-data-ftp/ /home/
 COPY ./sshd_config /etc/ssh/sshd_config
-RUN service ssh start
-CMD ["proftpd", "--nodaemon"]
+ENTRYPOINT["./entrypoint-vulncontainer.sh"]
 
 
 
