@@ -9,6 +9,9 @@ services:
       - 8080:80
     links:
       - mariadb
+    networks:
+      test_net:
+        ipv4_address: 172.20.0.13
 
   mariadb:
     image: mariadb
@@ -18,6 +21,9 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
       - "./uni.sql:/tmp/uni.sql"
+    networks:
+      test_net:
+        ipv4_address: 172.20.0.13
 
   vulndocker:
     image: vulncontainer_vulndocker
