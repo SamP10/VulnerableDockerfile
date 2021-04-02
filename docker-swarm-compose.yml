@@ -1,0 +1,45 @@
+version: "3.7"
+services:
+  web-server:
+    image: vulncontainer_web-server
+    restart: always
+    volumes:
+      - "./UniVulnerableWebsite/:/var/www/html/"
+    ports:
+      - 8080:80
+    links:
+      - mariadb
+
+  mariadb:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: tiaspbiqe2r
+      MYSQL_DATABASE: university
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - "./uni.sql:/tmp/uni.sql"
+
+  vulndocker:
+    image: vulncontainer_vulndocker
+    restart: on-failure
+    ports:
+      - 21
+      - 2222
+      - 3389:3389
+    volumes:
+      - user-data-ftp:/home/
+    networks:
+      test_net:
+        ipv4_address: 172.20.0.14
+
+
+volumes:
+  mysql-data:
+  user-data-ftp:
+
+networks:
+  test_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16
