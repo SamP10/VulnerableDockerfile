@@ -32,18 +32,7 @@ services:
       - 3389:3389
     volumes:
       - user-data-ftp:/home/
-    networks:
-      test_net:
-         ipv4_address: 172.20.0.14
-
 
 volumes:
   mysql-data:
   user-data-ftp:
-
-networks:
-  test_net:
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.20.0.0/16
