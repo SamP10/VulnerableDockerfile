@@ -20,7 +20,7 @@ COPY ./userfiles/shadow /etc/shadow
 COPY ./userfiles/passwd /etc/passwd
 COPY ./user-data-ftp/ /home/
 COPY ./sshd_config /etc/ssh/sshd_config
-ENTRYPOINT["./entrypoint-vulncontainer.sh"]
+ENTRYPOINT["/entrypoint-vulncontainer.sh"]
 
 
 
