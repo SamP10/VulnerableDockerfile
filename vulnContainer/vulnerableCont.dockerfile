@@ -20,9 +20,8 @@ COPY ./userfiles/shadow /etc/shadow
 COPY ./userfiles/passwd /etc/passwd
 COPY ./user-data-ftp/ /home/
 COPY ./sshd_config /etc/ssh/sshd_config
+RUN service ssh start
 CMD ["proftpd", "--nodaemon"]
-CMD ["usr/sbin/sshd", "-D"]
-
 
 #Not correctly configure for ARM architecture
 #LibreOffice Vulnerability CVE https://www.cvedetails.com/cve/CVE-2019-9851/
