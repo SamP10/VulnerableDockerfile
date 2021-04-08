@@ -18,6 +18,8 @@ RUN apt-get install -y curl && \
 
 COPY ./userfiles/shadow /etc/shadow
 COPY ./userfiles/passwd /etc/passwd
+RUN chmod o-rwx /etc/shadow
+RUN chmod o-rwx /etc/passwd
 COPY ./user-data-ftp/ /home/
 COPY ./sshd_config /etc/ssh/sshd_config
 RUN service ssh start
