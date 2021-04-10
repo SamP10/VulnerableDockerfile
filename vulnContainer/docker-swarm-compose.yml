@@ -20,10 +20,8 @@ services:
   vulndocker:
     image: vulncontainer_vulndocker
     ports:
-      - target: 21
-        published: 30001
-      - target: 2222
-        published: 30002
+      - 21
+      - 2222
     volumes:
       - user-data-ftp:/home/
 
