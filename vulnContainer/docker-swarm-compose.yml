@@ -26,6 +26,9 @@ services:
       - target: 21
         published: 40021
         mode: host
+      - target: 2222
+        published: 40022
+        mode: host
     volumes:
       - user-data-ftp:/home/
 
