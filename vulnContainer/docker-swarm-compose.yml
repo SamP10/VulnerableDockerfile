@@ -2,13 +2,11 @@ version: "3.7"
 services:
   web-server:
     image: vulncontainer_web-server
-    restart: always
     volumes:
       - "./UniVulnerableWebsite/:/var/www/html/"
     ports:
       - 8080:80
-    links:
-      - mariadb
+
 
   mariadb:
     image: mariadb
@@ -21,14 +19,11 @@ services:
 
   vulndocker:
     image: vulncontainer_vulndocker
-    restart: on-failure
     ports:
       - target: 21
-        published: 40021
-        mode: host
+        published: 30001
       - target: 2222
-        published: 40022
-        mode: host
+        published: 30002
     volumes:
       - user-data-ftp:/home/
 

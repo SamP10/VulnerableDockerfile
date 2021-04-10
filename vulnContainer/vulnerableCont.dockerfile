@@ -9,8 +9,6 @@ RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y curl && \
 #GIT Vulnerability CVE https://www.cvedetails.com/cve/CVE-2018-17456/
     apt-get install -y git && \
-#Rdesktop Vulnerability https://www.cvedetails.com/cve/CVE-2018-20182/
-    apt-get install -y rdesktop && \
 #OpenSSH Vulnerability https://www.cvedetails.com/cve/CVE-2018-15473/
     apt-get install -y openssh-server && \
 #Installation of ftp server
