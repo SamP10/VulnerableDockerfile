@@ -23,8 +23,8 @@ services:
     image: vulncontainer_vulndocker
     restart: on-failure
     ports:
-      - 21
-      - 2222
+      - 40000:21
+      - 40001:2222
     volumes:
       - user-data-ftp:/home/
 
