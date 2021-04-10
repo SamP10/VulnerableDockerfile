@@ -1877,7 +1877,7 @@ CREATE TABLE `useraccounts` (
 --
 
 INSERT INTO `useraccounts` (`id`, `username`, `email`, `priv_id`, `user_id`, `password`, `created_at`, `updated_at`) VALUES
-(1, 'W.Sean8406', 'W.Sean8406@staff.greendale.ac.uk', 1, 2959, '$1$p8TR0pZT$st30pmAsCRabQMmBGSgnQ0', '2021-01-31 16:18:18', '2021-01-31 16:18:18'),
+(1, 'W.Sean8406', 'W.Sean8406@staff.greendale.ac.uk', 1, 2959, '$1$p8TR0pZT$VJatVrWGTtq4VZ0U8OTDT.', '2021-01-31 16:18:18', '2021-01-31 16:18:18'),
 (2, 'K.Eden6310', 'K.Eden6310@staff.greendale.ac.uk', 1, 6477, '$1$p8TR0pZT$mRYT678lAzxiEYLzNF91B0', '2021-01-31 16:18:18', '2021-01-31 16:18:18'),
 (3, 'C.Melissa7594', 'C.Melissa7594@staff.greendale.ac.uk', 2, 7594, 'gG21nlckAGFnA', '2021-01-31 16:18:18', '2021-02-12 11:06:25'),
 (4, 'L.Dale186', 'L.Dale186@staff.greendale.ac.uk', 2, 4098, '$1$p8TR0pZT$WpZIzgBljzAJz1n9FpuNp/', '2021-01-31 16:18:18', '2021-01-31 16:18:18'),
