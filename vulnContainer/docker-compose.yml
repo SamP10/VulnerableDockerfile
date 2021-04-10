@@ -4,13 +4,10 @@ services:
     build:
       dockerfile: php.dockerfile
       context: .
-    restart: always
     volumes:
       - "./UniVulnerableWebsite/:/var/www/html/"
     ports:
       - 8080:80
-    links:
-      - mariadb
 
   mariadb:
     image: mariadb
@@ -25,7 +22,6 @@ services:
     build:
       dockerfile: vulnerableCont.dockerfile
       context: .
-    restart: on-failure
     ports:
       - 21
       - 2222
