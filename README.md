@@ -77,8 +77,8 @@ Using git to pull the repository:
 git clone https://github.com/SamP10/VulnerableDockerfile.git
 ```
 When the download has completed change directory to that of vulnContainer within VulnerableDockerfile.
-The directory consists of userfiles, dockerfiles, sql script and a docker compose file.
-In order to install the insecure website you will need to pull the UniVulnerableWebsite repository using git:
+<br>The directory consists of userfiles, dockerfiles, sql script and a docker compose file.
+<br>In order to install the insecure website you will need to pull the UniVulnerableWebsite repository using git:
 ```
 user@docker:/directory_path/vulnContainer> git clone https://github.com/SamP10/UniVulnerableWebsite.git
 ```
@@ -87,76 +87,31 @@ Docker compose creates all networks and images just through one file. Using the 
 ```
 user@docker:/directory_path/vulnContainer> docker-compose up -d
 ```
-
-This will install tools to help communicate to SQL server.
-You are then required to indicate to apache to use index.php first, doing so by changing the order in the dir.conf.
-
-```
-sudo nano /etc/apache2/mods-enabled/dir.conf
-```
-Restart apache2 server
+This will create 3 images: httpd apache server, mariadb server and the vulnerable container.
+<br>It will copy the sql file into the tmp. In order to import the database for the webserver, must interact with the live container with the following command:
 
 ```
-sudo systemctl restart apache2
-```
-Look at any packages you wish to install.
-
-```
-sudo apt-get install php-cli
-```
-Voila! Installation of working environment completed
-
-## Running the tests
-
-To check php is running create a file within /var/www/html/ named info.php
-
-```
-sudo nano /var/www/html/info.php
-<?php
-phpinfo();
-?>
-```
-Navigate to the ip address to display the php infomation
-
-
-## Adding this website
-
-First we need to install GIT to pull the repository
-
-```
-sudo apt-get install git
+docker exec -it container_id /bin/bash
 ```
 
-Change working directory too /var/www/html/ then git clone the repository to deploy it.
+Once interacting with the container simply running the next few commands should import the sql database which the website uses.
 
 ```
-sudo git clone https://github.com/SamP10/LaravelBet.git
+user@container:>mysql -u root -p
+mysql> CREATE DATABASE university;
+mysql> exit;
+user@container:>cd /tmp
+user@container:/tmp>mysql -u root -p university<uni.sql
 ```
+This will preserve in a volume created and only needs setting up once.
+To power down the containers use:
+```
+docker compose down
+```
+Navigate to *ipaddress:8080/login.php*<br>
+Voila! Installation of working environment completed.
 
-Recommended: installing phpmyadmin to modify data within the database
-Follow these guides to get up and running * [phpMyAdmin](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-20-04)
-Within a console and travelling to the cloned LaravelBet directory can begin a setup of personal environment.
 
-```
-C:\user\> cd destination/LaravelBet
-C:\user\destination\LaravelBet> composer create-project
-```
-After running the above, changing the .env file to match the details of your database, following the .env.example for default purposes should suffice.
-Establishing a connection to the database server will allow migration and seeding of the database. The database server must be running to populate the database.
-```
-C:\user\destination\LaravelBet> php artisan migrate:fresh --seed
-```
-This will populate the table desired within the .env file.
-
-```
-C:user\destination\LaravelBet> php artisan serve
-```
-Above will start a local server which hosts the website. Simply navigating to the provided IP address will pull up the homepage.
-```
-C:\user\destination\LaravelBet>php artisan serve
-Starting Laravel development server: http://127.0.0.1:8000
-[Fri Apr 30 18:01:42 2021] PHP 7.4.8 Development Server (http://127.0.0.1:8000) started
-```
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
