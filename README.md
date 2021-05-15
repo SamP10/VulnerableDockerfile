@@ -16,6 +16,12 @@ This is an insecure docker container which should only be used for local environ
 This application is for academic and educational purposes.<br>
 However, the system can be used as an example penetration testing techniques.
 
+## Video Setup
+
+https://user-images.githubusercontent.com/72082567/118373171-55e56a00-b5ad-11eb-8eb9-df3612b140e0.mp4
+
+
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
