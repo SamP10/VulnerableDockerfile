@@ -1,7 +1,7 @@
-# VulnerableDockerfile
-A Vulnerable dockerfile for containerizing a university business.<br>
-This docker file consists of docker xml files for ease of use, readily deployable on your own environment. 
-Hosting a ftp server a vulnerable ssh service and insecure website.
+# Vulnerable Dockerfile
+A vulnerable Dockerfile for containerizing a university business.<br>
+This Dockerfile consists of Docker XML files for ease of use, readily deployable on your own environment. 
+Hosting an FTP server, a vulnerable SSH service and an insecure website.
 <br>
 <u>Vulnerabilities include:</u>
 <ul>
@@ -12,9 +12,8 @@ Hosting a ftp server a vulnerable ssh service and insecure website.
 </ul>
 
 ## DISCLAIMER
-This is an insecure docker container which should only be used for local environments.<br>
+This is an insecure Docker container which should only be used for local environments.<br>
 This application is for academic and educational purposes.<br>
-However, the system can be used as an example penetration testing techniques.
 
 ## Video Setup
 
@@ -30,15 +29,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 To configure your own environment will require a virtual machine or a local environment.
 
-Video tutorial of setup:
-
-
-
-
-
 ### Installing
 
-A step by step series of examples to recreate on your own env.
+A step-by-step series of examples to recreate on your own env.
 
 ### Install Docker
 Update your system packages:
@@ -46,7 +39,7 @@ Update your system packages:
 sudo apt-get update && upgrade
 ```
 For most downloads follow to the docker download page [DOCKER](https://docs.docker.com/engine/install/).
-download via command line run:
+To download Docker via the command line, run:
 ```
 sudo apt-get install docker
 ```
@@ -54,15 +47,15 @@ Check whether it is installed:
 ```
 sudo systemctl status docker
 ```
-Add your default user to the docker group to execute docker commands without sudo.
+Add your default user to the Docker group to execute Docker commands without sudo.
 ```
 sudo usermod -aG docker ${USER}
 ```
-For this dockerfile to work requires the addition of docker compose, this is a separate package needing to be pulled using the curl tool.
+This Dockerfile requires the addition of Docker Compose, a separate package which needs to be pulled using the curl tool.
 ````
 sudo apt-get install curl
 ````
-Download docker-compose:
+Download Docker Compose:
 ```
 sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 ```
@@ -71,36 +64,39 @@ Change file permission to be executable:
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
-### Installation and deployment of the docker file
-In order to run the dockerfile first need to pull the repository from github using git
+### Installation and deployment of the Dockerfile
+In order to run the Dockerfile, first pull the repository from GitHub using Git:
 
 ```
 sudo apt-get install git
 ```
 
-Using git to pull the repository:
+Use Git to pull the repository:
 ```
 git clone https://github.com/SamP10/VulnerableDockerfile.git
 ```
-When the download has completed change directory to that of vulnContainer within VulnerableDockerfile.
+When the download has completed, change directory to that of vulnContainer within VulnerableDockerfile.
 <br>The directory consists of userfiles, dockerfiles, sql script and a docker compose file.
-<br>In order to install the insecure website you will need to pull the UniVulnerableWebsite repository using git:
 ```
-user@docker:/directory_path/vulnContainer> git clone https://github.com/SamP10/UniVulnerableWebsite.git
+cd VulnerableDockerfile/vulnContainer
 ```
-###Using docker compose
-Docker compose creates all networks and images just through one file. Using the docker-compose command to build the environment follows:
+<br>In order to install the insecure website, you will need to pull the UniVulnerableWebsite repository using git:
 ```
-user@docker:/directory_path/vulnContainer> docker-compose up -d
+git clone https://github.com/SamP10/UniVulnerableWebsite.git
+```
+### Using Docker Compose
+Docker Compose creates all networks and images just through one file. Use the docker-compose command to build the environment as follows:
+```
+docker-compose up -d
 ```
 This will create 3 images: httpd apache server, mariadb server and the vulnerable container.
-<br>It will copy the sql file into the tmp. In order to import the database for the webserver, must interact with the live container with the following command:
+<br>It will copy the sql file into the tmp. In order to import the database for the webserver, you must interact with the live container with the following command:
 
 ```
 docker exec -it container_id /bin/bash
 ```
 
-Once interacting with the container simply running the next few commands should import the sql database which the website uses.
+Once interacting with the container, simply running the next few commands should import the SQL database which the website uses.
 
 ```
 user@container:>mysql -u root -p
@@ -110,7 +106,7 @@ user@container:>cd /tmp
 user@container:/tmp>mysql -u root -p university<uni.sql
 ```
 This will preserve in a volume created and only needs setting up once.
-To power down the containers use:
+To power down the containers, use:
 ```
 docker compose down
 ```
@@ -135,8 +131,8 @@ See also the list of [contributors](https://github.com/your/project/contributors
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
+* Hat tip to anyone whose code was used.
