@@ -1,7 +1,7 @@
-# VulnerableDockerfile
-A Vulnerable dockerfile for containerizing a university business.<br>
-This docker file consists of docker xml files for ease of use, readily deployable on your own environment. 
-Hosting a ftp server a vulnerable ssh service and insecure website.
+# Vulnerable Dockerfile
+A vulnerable Dockerfile for containerizing a university business.<br>
+This Dockerfile consists of Docker XML files for ease of use, readily deployable on your own environment. 
+Hosting an FTP server, a vulnerable SSH service and an insecure website.
 <br>
 <u>Vulnerabilities include:</u>
 <ul>
@@ -12,9 +12,14 @@ Hosting a ftp server a vulnerable ssh service and insecure website.
 </ul>
 
 ## DISCLAIMER
-This is an insecure docker container which should only be used for local environments.<br>
+This is an insecure Docker container which should only be used for local environments.<br>
 This application is for academic and educational purposes.<br>
-However, the system can be used as an example penetration testing techniques.
+
+## Video Setup
+
+https://user-images.githubusercontent.com/72082567/118373171-55e56a00-b5ad-11eb-8eb9-df3612b140e0.mp4
+
+
 
 ## Getting Started
 
@@ -24,15 +29,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 To configure your own environment will require a virtual machine or a local environment.
 
-Video tutorial of setup:
-
-
-
-
-
 ### Installing
 
-A step by step series of examples to recreate on your own env.
+A step-by-step series of examples to recreate on your own env.
 
 ### Install Docker
 Update your system packages:
@@ -40,7 +39,7 @@ Update your system packages:
 sudo apt-get update && upgrade
 ```
 For most downloads follow to the docker download page [DOCKER](https://docs.docker.com/engine/install/).
-download via command line run:
+To download Docker via the command line, run:
 ```
 sudo apt-get install docker
 ```
@@ -48,15 +47,15 @@ Check whether it is installed:
 ```
 sudo systemctl status docker
 ```
-Add your default user to the docker group to execute docker commands without sudo.
+Add your default user to the Docker group to execute Docker commands without sudo.
 ```
 sudo usermod -aG docker ${USER}
 ```
-For this dockerfile to work requires the addition of docker compose, this is a separate package needing to be pulled using the curl tool.
+This Dockerfile requires the addition of Docker Compose, a separate package which needs to be pulled using the curl tool.
 ````
 sudo apt-get install curl
 ````
-Download docker-compose:
+Download Docker Compose:
 ```
 sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 ```
@@ -65,98 +64,56 @@ Change file permission to be executable:
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
-### Installation and deployment of the docker file
-In order to run the dockerfile first need to pull the repository from github using git
+### Installation and deployment of the Dockerfile
+In order to run the Dockerfile, first pull the repository from GitHub using Git:
 
 ```
 sudo apt-get install git
 ```
 
-Using git to pull the repository:
+Use Git to pull the repository:
 ```
 git clone https://github.com/SamP10/VulnerableDockerfile.git
 ```
-When the download has completed change directory to that of vulnContainer within VulnerableDockerfile.
-The directory consists of userfiles, dockerfiles, sql script and a docker compose file.
-In order to install the insecure website you will need to pull the UniVulnerableWebsite repository using git:
+When the download has completed, change directory to that of vulnContainer within VulnerableDockerfile.
+<br>The directory consists of userfiles, dockerfiles, sql script and a docker compose file.
 ```
-user@docker:/directory_path/vulnContainer> git clone https://github.com/SamP10/UniVulnerableWebsite.git
+cd VulnerableDockerfile/vulnContainer
 ```
-###Using docker compose
-Docker compose creates all networks and images just through one file. Using the docker-compose command to build the environment follows:
+<br>In order to install the insecure website, you will need to pull the UniVulnerableWebsite repository using git:
 ```
-user@docker:/directory_path/vulnContainer> docker-compose up -d
+git clone https://github.com/SamP10/UniVulnerableWebsite.git
 ```
-
-This will install tools to help communicate to SQL server.
-You are then required to indicate to apache to use index.php first, doing so by changing the order in the dir.conf.
-
+### Using Docker Compose
+Docker Compose creates all networks and images just through one file. Use the docker-compose command to build the environment as follows:
 ```
-sudo nano /etc/apache2/mods-enabled/dir.conf
+docker-compose up -d
 ```
-Restart apache2 server
+This will create 3 images: httpd apache server, mariadb server and the vulnerable container.
+<br>It will copy the sql file into the tmp. In order to import the database for the webserver, you must interact with the live container with the following command:
 
 ```
-sudo systemctl restart apache2
-```
-Look at any packages you wish to install.
-
-```
-sudo apt-get install php-cli
-```
-Voila! Installation of working environment completed
-
-## Running the tests
-
-To check php is running create a file within /var/www/html/ named info.php
-
-```
-sudo nano /var/www/html/info.php
-<?php
-phpinfo();
-?>
-```
-Navigate to the ip address to display the php infomation
-
-
-## Adding this website
-
-First we need to install GIT to pull the repository
-
-```
-sudo apt-get install git
+docker exec -it container_id /bin/bash
 ```
 
-Change working directory too /var/www/html/ then git clone the repository to deploy it.
+Once interacting with the container, simply running the next few commands should import the SQL database which the website uses.
 
 ```
-sudo git clone https://github.com/SamP10/LaravelBet.git
+user@container:>mysql -u root -p
+mysql> CREATE DATABASE university;
+mysql> exit;
+user@container:>cd /tmp
+user@container:/tmp>mysql -u root -p university<uni.sql
 ```
+This will preserve in a volume created and only needs setting up once.
+To power down the containers, use:
+```
+docker compose down
+```
+Navigate to *ipaddress:8080/login.php*<br>
+Voila! Installation of working environment completed.
 
-Recommended: installing phpmyadmin to modify data within the database
-Follow these guides to get up and running * [phpMyAdmin](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-20-04)
-Within a console and travelling to the cloned LaravelBet directory can begin a setup of personal environment.
 
-```
-C:\user\> cd destination/LaravelBet
-C:\user\destination\LaravelBet> composer create-project
-```
-After running the above, changing the .env file to match the details of your database, following the .env.example for default purposes should suffice.
-Establishing a connection to the database server will allow migration and seeding of the database. The database server must be running to populate the database.
-```
-C:\user\destination\LaravelBet> php artisan migrate:fresh --seed
-```
-This will populate the table desired within the .env file.
-
-```
-C:user\destination\LaravelBet> php artisan serve
-```
-Above will start a local server which hosts the website. Simply navigating to the provided IP address will pull up the homepage.
-```
-C:\user\destination\LaravelBet>php artisan serve
-Starting Laravel development server: http://127.0.0.1:8000
-[Fri Apr 30 18:01:42 2021] PHP 7.4.8 Development Server (http://127.0.0.1:8000) started
-```
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
@@ -174,8 +131,8 @@ See also the list of [contributors](https://github.com/your/project/contributors
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
+* Hat tip to anyone whose code was used.
