@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   web-server:
-    image: vulncontainer_web-server
+    image: samplant10/unidocker:php
     volumes:
       - "./UniVulnerableWebsite/:/var/www/html/"
     ports:
@@ -18,7 +18,7 @@ services:
       - "./uni.sql:/tmp/uni.sql"
 
   vulndocker:
-    image: vulncontainer_vulndocker
+    image: samplant10/unidocker:vulncont
     ports:
       - 21
       - 2222
